@@ -1,0 +1,7 @@
+table.schemaName = "NAYAKA";
+table.tableType = COLUMNSTORE;
+table.columns = [
+	{name = "TweetID"; sqlType = NVARCHAR; nullable = false; length = 20;},
+	{name = "TweetTime"; sqlType = NVARCHAR; nullable = false; length = 140;},
+	{name = "TweetText"; sqlType = NVARCHAR; nullable = false; length = 200;}
+];

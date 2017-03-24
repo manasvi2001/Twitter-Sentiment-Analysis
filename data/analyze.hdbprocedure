@@ -1,0 +1,25 @@
+ PROCEDURE "NAYAKA"."workshop.sessiona.00.data::analyze" (
+	IN option INTEGER,
+	OUT res INT
+ ) 
+	LANGUAGE SQLSCRIPT AS
+BEGIN
+/***************************** 
+	Write your procedure logic 
+ *****************************/
+ res := 0;
+
+ 	IF :option = 0
+    THEN
+   select count(a."TweetText") INTO res
+		from "NAYAKA"."workshop.sessiona.00.data::tweets" a,
+		"NAYAKA"."workshop.sessiona.00.data::negative" n
+		where LOCATE(a."TweetText",n."Words")>0;
+    ELSE
+       select count(a."TweetText") INTO res
+		from "NAYAKA"."workshop.sessiona.00.data::tweets" a,
+		"NAYAKA"."workshop.sessiona.00.data::positive" p
+		where LOCATE(a."TweetText",p."Words")>0;
+    END IF;
+
+END;

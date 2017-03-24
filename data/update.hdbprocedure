@@ -1,0 +1,21 @@
+PROCEDURE "NAYAKA"."workshop.sessiona.00.data::update" (
+	IN WORD NVARCHAR(40),
+	IN CHOICE INTEGER
+ ) 
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER 
+	--DEFAULT SCHEMA <default_schema_name>
+	AS
+BEGIN
+/***************************** 
+	Write your procedure logic 
+ *****************************/
+ 	IF :CHOICE = 0
+    THEN
+        INSERT INTO "NAYAKA"."workshop.sessiona.00.data::negative" 
+            VALUES (:WORD);
+    ELSE
+        INSERT INTO "NAYAKA"."workshop.sessiona.00.data::positive" 
+            VALUES (:WORD);
+    END IF;
+END;
